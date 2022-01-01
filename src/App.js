@@ -7,29 +7,38 @@ class App extends Component {
     super();
 
     this.state = {
-      string: 'Hello Yihua Zhang'
-    }
+      monsters: [
+        {
+          name: 'Paman',
+          id: 'wfe43',
+        },
+        {
+          name: 'Pengen',
+          id: '890j',
+        },
+        {
+          name: 'Kamu',
+          id: '23de',
+        },
+      ],
+    };
   }
 
   render() {
-    const { string } = this.state;
+    const { monsters } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            {
-              string
-            }
-          </p>
-          <button
-            onClick={() => this.setState({ string: 'Hello Andrei' })}
-          >
-            Change Text
-          </button>
-        </header>
+        {monsters.map(({ id, name }) => (
+          <h1 key={id}>{name}</h1>
+        ))}
+        {/**
+         * Keys Pada penggunaan Map:
+         * Keys membantu react untuk mengidentifikasi item mana yang berubah,
+         * ditambahkan, atau dihapus.
+         * Read More: https://reactjs.org/docs/lists-and-keys.html#keys
+         */}
       </div>
-    )
+    );
   }
 }
 
