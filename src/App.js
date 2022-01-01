@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import logo from './logo.svg';
 import './App.css';
-class App extends Component {
+class App extends React.Component {
 
   constructor() {
     super();
@@ -10,6 +10,18 @@ class App extends Component {
       string: 'Hello Yihua Zhang'
     }
   }
+
+  /**
+   * Note: React Lifecycle come from "Component" of React
+   * ex: componentDidMount, componentDidUpdate, componentWillUnmount etc
+   */
+
+  /**
+   * SPA: Single Page Application
+   * - Than request a page, SPA request a Data
+   * - can access multiple API or 3rd Party API
+   * - each component can show data for own whick want display
+   */
 
   render() {
     const { string } = this.state;
