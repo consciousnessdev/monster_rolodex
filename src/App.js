@@ -23,14 +23,7 @@ class App extends Component {
     const { monsters } = this.state;
     return (
       <div className="App">
-        <CardList>
-          {/* passing monsters state passed as children props */}
-          {
-            monsters.map(({ id, name }) => (
-              <h1 key={id}>{name}</h1>
-            ))
-          }
-        </CardList>
+        <CardList monsters={monsters} />
       </div>
     );
   }
