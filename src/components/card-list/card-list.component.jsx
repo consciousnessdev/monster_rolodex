@@ -3,7 +3,6 @@ import './card-list.styles.css';
 
 import Card from '../card/card.component';
 
-// passing props of children, props within tag bracket
 const CardList = ({ monsters }) => {
     return (
       <div className="card-list">

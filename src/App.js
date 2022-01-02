@@ -9,6 +9,7 @@ class App extends Component {
 
     this.state = {
       monsters: [],
+      searchField: '',
     };
   }
 
@@ -23,6 +24,11 @@ class App extends Component {
     const { monsters } = this.state;
     return (
       <div className="App">
+        <input
+          type="search"
+          placeholder="search monster"
+          onChange={({ target }) => this.setState({ searchField: target.value })}
+        />
         <CardList monsters={monsters} />
       </div>
     );
