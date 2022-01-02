@@ -24,6 +24,26 @@ class App extends Component {
     };
   }
 
+  /**
+   * Lifecycle Method: suatu method yang dipanggil pada tahapan yang berbeda
+   * ketika render dari ketika komponen dirender
+   */
+
+  /**
+   * componentDidMount: lifecycle yang dipanggil ketika komponen dikaitkan (mount).
+   * pengatian atau mounting adalah ketika react menempatkan komponen ke halaman dan
+   * dirender dalam bentuk DOM pada saat pertama kali
+   */
+
+  componentDidMount() {
+    // make API request
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      // users renamed to monsters then set to state monsters
+      .then(monsters => this.setState({monsters}));
+  }
+  
+
   render() {
     const { monsters } = this.state;
     return (
@@ -31,12 +51,6 @@ class App extends Component {
         {monsters.map(({ id, name }) => (
           <h1 key={id}>{name}</h1>
         ))}
-        {/**
-         * Keys Pada penggunaan Map:
-         * Keys membantu react untuk mengidentifikasi item mana yang berubah,
-         * ditambahkan, atau dihapus.
-         * Read More: https://reactjs.org/docs/lists-and-keys.html#keys
-         */}
       </div>
     );
   }
