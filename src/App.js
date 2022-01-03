@@ -12,6 +12,9 @@ class App extends Component {
       monsters: [],
       searchField: '',
     };
+
+    // bind handleChange event version
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +23,18 @@ class App extends Component {
       .then(monsters => this.setState({monsters}));
   }
   
+  // refactor to new handleChange function
+  // handleChange(e) {
+  //   this.setState({ searchField: e.target.value });
+  // }
+
+  // arrow function version
+  // note: on first js call constructor it will check arrow function 
+  // and set 'this' context of setState to App component context
+
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value});
+  }
 
   render() {
     const { monsters, searchField } = this.state;
@@ -30,9 +45,8 @@ class App extends Component {
       <div className="App">
         <SearchBox
           placeholder="search monster"
-          handleChange={({ target }) =>
-            this.setState({ searchField: target.value })
-          }
+          // set handleChange as handleChange binded to constructor
+          handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonstes} />
       </div>
