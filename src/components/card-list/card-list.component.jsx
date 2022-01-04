@@ -6,8 +6,8 @@ import Card from '../card/card.component';
 const CardList = ({ monsters }) => {
     return (
       <div className="card-list">
-        {monsters.map(({ id, name }) => (
-            <Card key={id} name={name} id={id} />
+        {monsters.map(({ id, name, email }) => (
+            <Card key={id} name={name} id={id} email={email} />
         ))}
       </div>
     );
