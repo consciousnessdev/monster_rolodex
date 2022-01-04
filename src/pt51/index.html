@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+    <!-- own script -->
+    <script>
+        const { createElement } = React;
+
+        const Person = ({name, occupation}) => {
+            return createElement("div", {}, [
+                createElement("h1", {key: 'person-1'}, name),
+                createElement("p", {key: 'person-2'}, occupation),
+            ])
+        }
+
+        // functional version
+        // const App = () => {
+        //     return createElement("div", {},
+        //         // createElement("h1", {}, "REACT IS RENDERED!!!")
+        //         [
+        //             createElement("h1", {key: 'header'}, "REACT IS RENDERED!!!"),
+        //             createElement(Person, {key: 1, name: 'Yihua', occupation: 'developer'}),
+        //             createElement(Person, {key: 2, name: 'Andrei', occupation: 'instructor'}),
+        //             createElement(Person, {key: 3, name: 'Ted', occupation: 'developer'}),
+        //         ]
+        //     );
+        // };
+
+        // class based version
+        class App extends React.Component {
+            render() {
+                return createElement("div", {},
+                    // createElement("h1", {}, "REACT IS RENDERED!!!")
+                    [
+                        createElement("h1", { key: 'header' }, "REACT IS RENDERED!!!"),
+                        createElement(Person, { key: 1, name: 'Yihua', occupation: 'developer' }),
+                        createElement(Person, { key: 2, name: 'Andrei', occupation: 'instructor' }),
+                        createElement(Person, { key: 3, name: 'Ted', occupation: 'developer' }),
+                    ]
+                )
+            }
+        }
+
+        ReactDOM.render(
+            createElement(App),
+            document.getElementById('root')
+        );
+
+    </script>
+</body>
+</html>
