@@ -22,15 +22,6 @@ class App extends Component {
       .then(response => response.json())
       .then(monsters => this.setState({monsters}));
   }
-  
-  // refactor to new handleChange function
-  // handleChange(e) {
-  //   this.setState({ searchField: e.target.value });
-  // }
-
-  // arrow function version
-  // note: on first js call constructor it will check arrow function 
-  // and set 'this' context of setState to App component context
 
   handleChange = (e) => {
     this.setState({ searchField: e.target.value});
@@ -43,9 +34,9 @@ class App extends Component {
     );
     return (
       <div className="App">
+        <h1> Monster Rolodex </h1>
         <SearchBox
           placeholder="search monster"
-          // set handleChange as handleChange binded to constructor
           handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonstes} />
