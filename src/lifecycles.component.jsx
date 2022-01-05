@@ -20,7 +20,9 @@ class Lifecycles extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
       console.log('shouldComponentUpdate', nextProps);
-      return true;
+      // this will detect if next props text not change,
+      // so component not need update/re-rendering
+      return nextProps.text !== this.props.text;
   }
   
 
