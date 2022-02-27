@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class Lifecycles extends Component {
+// class Lifecycles extends Component {
+
+// PureComponent as default implement
+// shouldComponentUpdate lifeCycle
+class Lifecycles extends PureComponent {
   constructor() {
     super();
     console.log('constructor');

@@ -1,45 +1,57 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Lifecycles from './lifecycles.component';
+// import Lifecycles from './lifecycles.component';
+import Person from './person.component';
 
 class App extends Component {
-
   constructor() {
     super();
 
     this.state = {
-      showChild: true,
-      text: '',
-    }
+      count: 0,
+      person: { name: 'Jake', age: 22 },
+      showPerson: false,
+    };
   }
 
   render() {
-    const { string } = this.state;
+    // const { count } = this.state;
+
+    // try take person data to local state
+    // const { count, person } = this.state;
+
+    // adding conditional rendering
+    const { count, person, showPerson } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          {/* <Person person={{ name: 'Jake', age: 22  }} /> */}
+          {/* it will same rendered Person component */}
+          {/* <Person person={person} /> */}
+          {/* conditional rendering */}
+          {showPerson ? <Person person={person} /> : null}
+          Button Count: {count}
           <button
-            className="button"
-            onClick={() =>
-              this.setState((state) => ({ showChild: !state.showChild }))
-            }
+            onClick={() => {
+              this.setState({
+                count: count + 1,
+              });
+            }}
           >
-            Toggle Lifecycles
+            Increase Count
           </button>
           <button
-            className="button"
-            onClick={() =>
-              this.setState((state) => ({ text: state.text + '_hello' }))
-            }
+            onClick={() => {
+              this.setState((prevState) => ({
+                showPerson: !prevState.showPerson,
+              }));
+            }}
           >
-            Update Text
+            Toggle Person
           </button>
-          {
-            this.state.showChild ? <Lifecycles text={this.state.text} /> : null
-          }
         </header>
       </div>
     );
